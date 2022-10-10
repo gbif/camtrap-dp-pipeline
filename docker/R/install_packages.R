@@ -24,6 +24,10 @@ install.packages(c("plumber",
                    "rmarkdown",
                    "testthat",
                    "knitr",
+                   "pkgdown",
+                   "roxygen2",
+                   "rversions",
+                   "urlchecker"
                    "devtools"), dependencies = TRUE)
 
 devtools::install_github("inbo/camtraptor")

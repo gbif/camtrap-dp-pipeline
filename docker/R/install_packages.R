@@ -11,4 +11,5 @@ install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linu
 
 install.packages(c("dplyr","here","EML","plumber", "assertthat", "datapackage", "dplyr", "glue", "here",
                    "htmltools", "jsonlite", "leaflet", "lubridate", "purrr", "readr", "rlang", "stringr", "tidyr",
-                   "datapackage", "leaflet"), dependencies = TRUE)
+                   "datapackage", "leaflet", "config", "iterators", "jsonvalidate", "rlist", "tableschema.r",
+                   "urltools", "V8"), dependencies = TRUE)

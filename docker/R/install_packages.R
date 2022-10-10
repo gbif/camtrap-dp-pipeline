@@ -1,4 +1,5 @@
-install.packages(c("assertthat",
+install.packages(c("plumber",
+                   "assertthat",
                    "DBI",
                    "dplyr",
                    "EML",

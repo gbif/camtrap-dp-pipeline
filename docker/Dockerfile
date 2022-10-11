@@ -1,6 +1,11 @@
 FROM r-base
-RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev software-properties-common \
+RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev software-properties-common wget \
     && mkdir -p "/usr/local/gbif/camtrap-dp/{R,dwca,dp}"  \
+    && wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
+           -O /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
+    && apt install -y -V /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
+    && apt update -y \
+    && apt install -y libarrow-dev \
     && add-apt-repository ppa:c2d4u.team/c2d4u4.0+ \
     && apt -y install r-cran-plumber r-cran-assertthat r-cran-dbi r-cran-dplyr r-cran-glue r-cran-htmltools r-cran-lifecycle r-cran-lubridate r-cran-purrr \
                       r-cran-rcolorbrewer r-cran-readr r-cran-rlang r-cran-rsqlite r-cran-stringr r-cran-tidyr r-cran-uuid r-cran-covr r-cran-knitr r-cran-rmarkdown \

@@ -1,7 +1,7 @@
 library(dplyr)
 library(here)
-library(camtraptor)
 library(EML)
+library(camtraptor)
 
 import_path <- "/usr/local/gbif/camera-trap-dp/dp/"
 export_path <- "/usr/local/gbif/camera-trap-dp/dp/"

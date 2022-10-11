@@ -5,9 +5,10 @@ RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev 
     && apt -y install r-cran-plumber r-cran-assertthat r-cran-dbi r-cran-dplyr r-cran-glue r-cran-htmltools r-cran-lifecycle r-cran-lubridate r-cran-purrr \
                       r-cran-rcolorbrewer r-cran-readr r-cran-rlang r-cran-rsqlite r-cran-stringr r-cran-tidyr r-cran-uuid r-cran-covr r-cran-knitr r-cran-rmarkdown \
                       r-cran-testthat r-cran-knitr r-cran-pkgdown r-cran-roxygen2 r-cran-rversions r-cran-urlchecker r-cran-here r-cran-remotes r-cran-lifecycle \
-                      r-cran-colorspace r-cran-labeling r-cran-farver r-cran-isoband r-cran-gtable r-cran-viridislite r-cran-terra r-cran-sp r-cran-curl r-cran-evaluate \
+                      r-cran-colorspace r-cran-labeling r-cran-farver r-cran-isoband r-cran-gtable r-cran-viridis r-cran-terra r-cran-sp r-cran-curl r-cran-evaluate \
                       r-cran-purrr r-cran-png r-cran-markdown r-cran-crosstalk r-cran-htmlwidgets r-cran-tidyselect r-cran-munsell \
-                      r-cran-gridextra r-cran-raster r-cran-scales r-cran-vroom r-cran-v8
+                      r-cran-gridextra r-cran-raster r-cran-scales r-cran-vroom r-cran-v8 r-cran-jsonld r-cran-ggplot2 r-cran-proxy \
+                      r-cran-rematch r-cran-jpeg r-cran-matrix
 COPY ["R/server.R","R/dp_dwca.R","R/install_packages.R","/usr/local/gbif/camtrap-dp/R/"]
 WORKDIR "/usr/local/gbif/camtrap-dp/R/"
 RUN ["Rscript", "install_packages.R"]

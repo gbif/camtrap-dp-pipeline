@@ -1,6 +1,6 @@
 FROM r-base
 RUN apt-get update
-RUN apt-get -y install build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev
+RUN apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev
 RUN mkdir -p "/usr/local/gbif/camera-trap-dp/R/"
 RUN mkdir "/usr/local/gbif/camera-trap-dp/dwca/"
 RUN mkdir "/usr/local/gbif/camera-trap-dp/dp/"

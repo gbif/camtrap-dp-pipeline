@@ -1,5 +1,5 @@
 FROM r-base
-RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev software-properties-common wget libpq-dev libssl-dev jq\
+RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev software-properties-common wget libpq-dev libssl-dev libjq-dev\
     && mkdir -p "/usr/local/gbif/camtrap-dp/{R,dwca,dp}"  \
     && wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
            -O /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \

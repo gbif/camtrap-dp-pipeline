@@ -1,5 +1,5 @@
 FROM r-base
-RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev software-properties-common wget \
+RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev libsodium-dev software-properties-common wget libpq-dev libssl-dev jq\
     && mkdir -p "/usr/local/gbif/camtrap-dp/{R,dwca,dp}"  \
     && wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
            -O /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev 
                       r-cran-rematch r-cran-jpeg r-cran-matrix r-cran-e1071 r-cran-wk r-cran-dbplyr r-cran-listenv r-cran-parallelly \
                       r-cran-classint r-cran-hunspell r-cran-redland r-cran-globals r-cran-palmerpenguins r-cran-maps \
                       r-cran-rgdal r-cran-s2 r-cran-future r-cran-units r-cran-shinyjs \
-                      r-cran-spelling r-cran-rdflib r-cran-dbitest r-cran-maptools r-cran-xml r-cran-mockr r-cran-sf
+                      r-cran-spelling r-cran-rdflib r-cran-dbitest r-cran-maptools r-cran-xml r-cran-mockr r-cran-sf r-cran-devtools
 COPY ["R/server.R","R/dp_dwca.R","R/install_packages.R","/usr/local/gbif/camtrap-dp/R/"]
 WORKDIR "/usr/local/gbif/camtrap-dp/R/"
 RUN ["Rscript", "install_packages.R"]

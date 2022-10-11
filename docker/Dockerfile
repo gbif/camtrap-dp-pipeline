@@ -8,7 +8,7 @@ RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev 
                       r-cran-colorspace r-cran-labeling r-cran-farver r-cran-isoband r-cran-gtable r-cran-viridis r-cran-terra r-cran-sp r-cran-curl r-cran-evaluate \
                       r-cran-purrr r-cran-png r-cran-markdown r-cran-crosstalk r-cran-htmlwidgets r-cran-tidyselect r-cran-munsell \
                       r-cran-gridextra r-cran-raster r-cran-scales r-cran-vroom r-cran-v8 r-cran-jsonld r-cran-ggplot2 r-cran-proxy \
-                      r-cran-rematch r-cran-jpeg r-cran-matrix
+                      r-cran-rematch r-cran-jpeg r-cran-matrix r-cran-e1071 r-cran-wk r-cran-dbplyr
 COPY ["R/server.R","R/dp_dwca.R","R/install_packages.R","/usr/local/gbif/camtrap-dp/R/"]
 WORKDIR "/usr/local/gbif/camtrap-dp/R/"
 RUN ["Rscript", "install_packages.R"]

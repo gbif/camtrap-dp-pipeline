@@ -1,2 +1,2 @@
-install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3"), dependencies = TRUE, libs_only= TRUE)
+install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3","arkdb","duckdb"), dependencies = TRUE, libs_only= TRUE)
 remotes::install_github("inbo/camtraptor", build_vignettes = FALSE, build_manual = FALSE)

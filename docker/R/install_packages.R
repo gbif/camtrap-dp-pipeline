@@ -8,5 +8,6 @@ options(
 )
 
 install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest")
-install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3","arkdb","duckdb","contentid","RJSONIO","rgeos"), dependencies = TRUE, libs_only= TRUE)
+install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3","duckdb","contentid","RJSONIO","rgeos","storr","nycflights13"), dependencies = TRUE)
+devtools::install_github("cboettig/arkdb")
 remotes::install_github("inbo/camtraptor", build_vignettes = FALSE, build_manual = FALSE)

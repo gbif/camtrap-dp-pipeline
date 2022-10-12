@@ -1,4 +1,4 @@
-# Camtraptor docker server
+# Camtraptor Docker Server
 
 This package contains an HTTP server to run that transformation of [CamTrapDP](https://tdwg.github.io/camtrap-dp/) into a DwC-A directory (expanded).
 It simply assumes the existence of two directories `/usr/local/gbif/camtrap-dp/dp` in which the data package must be copied (extracted in directory)

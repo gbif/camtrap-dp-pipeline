@@ -3,7 +3,7 @@ FROM r-base
 RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev \
                                   libsodium-dev software-properties-common wget libpq-dev libssl-dev libjq-dev\
     #Create required directories
-    && mkdir -p "/usr/local/gbif/camtrap-dp/{R,dwca,dp}"  \
+    && mkdir -p "/usr/local/gbif/camtrap-dp/R" && mkdir -p "/usr/local/gbif/camtrap-dp/dwca" && mkdir -p "/usr/local/gbif/camtrap-dp/dp" \
     #Install Apache Arrow libraries
     && wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
            -O /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \

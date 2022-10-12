@@ -24,10 +24,10 @@ RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev 
                       r-cran-future r-cran-units r-cran-shinyjs r-cran-spelling r-cran-rdflib r-cran-dbitest r-cran-maptools r-cran-xml \
                       r-cran-mockr r-cran-sf r-cran-devtools
 COPY ["R/server.R","R/dp_dwca.R","R/install_packages.R","/usr/local/gbif/camtrap-dp/R/"]
+WORKDIR "/usr/local/gbif/camtrap-dp/R/"
 #Installing source packages
 RUN ["Rscript", "install_packages.R"]
 #General configs
-WORKDIR "/usr/local/gbif/camtrap-dp/R/"
 EXPOSE 8000
 VOLUME ["/usr/local/gbif/camtrap-dp/dwca/", "/usr/local/gbif/camtrap-dp/dp/"]
-ENTRYPOINT ["Rscript", "/usr/local/gbif/camtrap-dp/R/server.R"]
+ENTRYPOINT ["Rscript", "server.R"]

@@ -1,4 +1,9 @@
+#https://github.com/ropensci/arkdb
+#Arkdb installation from source
 remotes::install_github("cboettig/arkdb")
+
+#https://arrow.apache.org/docs/r/articles/install.html
+#Installing Apache Arrow from binaries
 options(
   HTTPUserAgent =
     sprintf(
@@ -8,6 +13,10 @@ options(
     )
 )
 Sys.setenv(LIBARROW_BINARY = "true", LIBARROW_MINIMAL = "false")
-install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest")
-install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3","duckdb","contentid","RJSONIO","rgeos","storr","nycflights13","RPostgres"), dependencies = TRUE)
+install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest", libs_only = TRUE)
+
+#Install source packages
+install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3","contentid","RJSONIO","rgeos","storr"), dependencies = FALSE, libs_only = TRUE)
+
+#Install camtraptor package from github
 remotes::install_github("inbo/camtraptor", build_vignettes = FALSE, build_manual = FALSE)

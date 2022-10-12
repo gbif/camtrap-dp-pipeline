@@ -1,1 +1,2 @@
-docker container run -v /usr/local/gbif/camtrap-dp/dwca/:/tmp/camtrap-dp/dwca/ -v /usr/local/gbif/camtrap-dp/dp/:/tmp/camtrap-dp/dp/ -p 8000:8000 -i -t --name rgbifcamtrap rgbifcamtrap:0.1
+#!/bin/bash
+docker container run --expose 8000 --rm -it -d -p 8000:8000/tcp -v /usr/local/gbif/camtrap-dp/dwca/:/tmp/camtrap-dp/dwca/ -v /usr/local/gbif/camtrap-dp/dp/:/tmp/camtrap-dp/dp/ --name rgbifcamtrap rgbifcamtrap:0.1

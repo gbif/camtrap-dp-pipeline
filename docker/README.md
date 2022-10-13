@@ -25,4 +25,4 @@ The entry-point executes a [plumber server](R/server.R) that exposes the service
 ## Docker container
 
 To run/create a container, execute the script [run.sh](run.sh), it provides some default mappings for ports and volumes.
-Preliminary testing recommends a minimum of 4 GB to run this container, after several executions the memory seems to peek at 3.5 GB.
+Preliminary testing recommends a minimum of 4 GB to run this container, after several executions, using a 2 million records datasets, the memory seems to peek at 3.5 GB.

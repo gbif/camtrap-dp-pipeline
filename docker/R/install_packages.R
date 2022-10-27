@@ -16,7 +16,7 @@ Sys.setenv(LIBARROW_BINARY = "true", LIBARROW_MINIMAL = "false")
 install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest", libs_only = TRUE)
 
 #Install source packages
-install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3","contentid","RJSONIO","rgeos","storr"), dependencies = FALSE, libs_only = TRUE)
+install.packages(c("jqr","leaflet","leaflet.providers","EML","emld","frictionless","R.methodsS3","contentid","RJSONIO","rgeos","storr","logger"), dependencies = FALSE, libs_only = TRUE)
 
 #Install camtraptor package from github
 remotes::install_github("inbo/camtraptor", build_vignettes = FALSE, build_manual = FALSE)

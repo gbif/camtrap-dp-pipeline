@@ -1,29 +1,45 @@
 library(dplyr)
 library(EML)
 library(camtraptor)
+library(logger)
 
 import_path <- "/usr/local/gbif/camtrap-dp/dwca"
 export_path <- "/usr/local/gbif/camtrap-dp/dp"
+logs_path <- "/usr/local/gbif/camtrap-dp/logs"
+
+#Logger setup
+if (!fs::dir_exists(logs_path)) fs::dir_create(logs_path)
+log_appender(appender_file(tempfile("camtraptor_", logs_path, ".log")))
 
 #* Transforms the CameraTrap Data Package into DwC-A.
 #* @param dataset_key GBIF datset key
 #* @param dataset_title GBIF dataset title
 #* @get /to_dwca
 function(dataset_key="", dataset_title="") {
-  #Create the package object
-  package <- camtraptor::read_camtrap_dp(file.path(import_path, dataset_key))
-  package$title <- dataset_title
+  tryCatch(expr = {#Create the package object
+                   package <- camtraptor::read_camtrap_dp(file = file.path(import_path, dataset_key))
+                   package$title <- dataset_title
 
-  #create the dwc files
-  file_export_path <- file.path(export_path, dataset_key)
-  unlink(file_export_path)
-  write_dwc(package, file_export_path)
+                   #create the dwc files
+                   file_export_path <- file.path(export_path, dataset_key)
+                   unlink(file_export_path)
+                   write_dwc(package, file_export_path)
 
-  #flush memory
-  gc()
+                   #flush memory
+                   gc()
 
-  #returns with a sucess message
-  return(sprintf("Dataset %s transformed", dataset_key))
+                   #returns with a sucess message
+                   log_info(skip_formatter(sprintf("Dataset %s transformed", dataset_key)))
+                   return(sprintf("Dataset %s transformed", dataset_key))
+         },
+         error = function(e){
+           log_error(paste("Error processing dataset ", dataset_key))
+           stop(e)
+         },
+         warning = function(w){
+           log_warn(paste("Warning processing dataset ", dataset_key))
+           warning(w)
+         })
 }
 
 

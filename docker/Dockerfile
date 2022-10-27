@@ -29,5 +29,5 @@ WORKDIR "/usr/local/gbif/camtrap-dp/R/"
 RUN ["Rscript", "install_packages.R"]
 #General configs
 EXPOSE 8000
-VOLUME ["/usr/local/gbif/camtrap-dp/dwca/", "/usr/local/gbif/camtrap-dp/dp/"]
+VOLUME ["/usr/local/gbif/camtrap-dp/dwca/", "/usr/local/gbif/camtrap-dp/dp/", "/usr/local/gbif/camtrap-dp/logs/"]
 ENTRYPOINT ["Rscript", "server.R"]

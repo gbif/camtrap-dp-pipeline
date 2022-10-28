@@ -29,6 +29,9 @@ function(dataset_key="", dataset_title="") {
                    unlink(file_export_path)
                    write_dwc(package, file_export_path)
 
+                   #copy meta.xml
+                   file.copy("resources/meta.xml", file_export_path)
+
                    #flush memory
                    gc()
 

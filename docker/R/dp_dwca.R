@@ -3,8 +3,8 @@ library(EML)
 library(camtraptor)
 library(logger)
 
-import_path <- "/usr/local/gbif/camtrap-dp/dwca"
-export_path <- "/usr/local/gbif/camtrap-dp/dp"
+export_path <- "/usr/local/gbif/camtrap-dp/dwca"
+import_path <- "/usr/local/gbif/camtrap-dp/dp"
 logs_path <- "/usr/local/gbif/camtrap-dp/logs"
 
 #Logger setup

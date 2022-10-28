@@ -17,7 +17,7 @@ log_appender(appender_file(tempfile("camtraptor_", logs_path, ".log")))
 #* @get /to_dwca
 function(dataset_key="", dataset_title="") {
   tryCatch(expr = {#Create the package object
-                   file_path <- file.path(import_path, dataset_key)
+                   file_path <- file.path(import_path, dataset_key, "datapackage.json")
                    if (!file_test("-f",file_path)) {
                     stop(paste("Input path does not exist", file_path))
                    }

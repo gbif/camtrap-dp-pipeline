@@ -1,4 +1,4 @@
-FROM r-base:4.2.0
+FROM r-base:4.1.0
 #Install required system packages
 RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev \
                                   libsodium-dev software-properties-common wget libpq-dev libssl-dev libjq-dev\

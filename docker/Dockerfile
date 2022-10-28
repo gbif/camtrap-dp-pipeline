@@ -5,9 +5,9 @@ RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev 
     #Create required directories
     && mkdir -p "/usr/local/gbif/camtrap-dp/R" && mkdir -p "/usr/local/gbif/camtrap-dp/dwca" && mkdir -p "/usr/local/gbif/camtrap-dp/dp" \
     #Install Apache Arrow libraries
-    && wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
-           -O /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
-    && apt install -y -V /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
+    && wget https://apache.jfrog.io/artifactory/arrow/debian/apache-arrow-apt-source-latest-bookworm.deb \
+           -O /tmp/apache-arrow-apt-source-latest-bookworm.deb \
+    && apt install -y -V /tmp/apache-arrow-apt-source-latest-bookworm.deb \
     && apt update -y \
     && apt install -y libarrow-dev \
     #Install required R packages from the repository https://cran.r-project.org/bin/linux/ubuntu/

@@ -17,7 +17,11 @@ log_appender(appender_file(tempfile("camtraptor_", logs_path, ".log")))
 #* @get /to_dwca
 function(dataset_key="", dataset_title="") {
   tryCatch(expr = {#Create the package object
-                   package <- camtraptor::read_camtrap_dp(file = file.path(import_path, dataset_key))
+                   file_path <- file.path(import_path, dataset_key)
+                   if (!file_test("-f",file_path)) {
+                    stop(paste("Input path does not exist", file_path))
+                   }
+                   package <- camtraptor::read_camtrap_dp(file = file_path)
                    package$title <- dataset_title
 
                    #create the dwc files
@@ -33,12 +37,8 @@ function(dataset_key="", dataset_title="") {
                    return(sprintf("Dataset %s transformed", dataset_key))
          },
          error = function(e){
-           log_error(paste("Error processing dataset ", dataset_key))
-           stop(e)
-         },
-         warning = function(w){
-           log_warn(paste("Warning processing dataset ", dataset_key))
-           warning(w)
+           log_error(paste("Error processing dataset", dataset_key, e))
+           e
          })
 }
 

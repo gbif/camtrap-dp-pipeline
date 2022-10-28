@@ -30,7 +30,7 @@ function(dataset_key="", dataset_title="") {
                    write_dwc(package, file_export_path)
 
                    #copy meta.xml
-                   file.copy("resources/meta.xml", file_export_path)
+                   file.copy("resources/meta.xml", file.path(file_export_path, "meta.xml"))
 
                    #flush memory
                    gc()

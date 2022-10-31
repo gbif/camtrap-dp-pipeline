@@ -30,8 +30,8 @@ function(dataset_key="", dataset_title="") {
                    unlink(file_export_path)
                    write_dwc(package, file_export_path)
 
-                   #copy meta.xml
-                   file.copy(here("resources","meta.xml"), file.path(file_export_path, "meta.xml"))
+                   #copy meta.xml, this copied to the same directory where this script run in the docker image
+                   file.copy(here("meta.xml"), file.path(file_export_path, "meta.xml"))
 
                    #flush memory
                    gc()

@@ -2,7 +2,6 @@ library(dplyr)
 library(EML)
 library(camtraptor)
 library(logger)
-library(here)
 
 export_path <- "/usr/local/gbif/camtrap-dp/dwca"
 import_path <- "/usr/local/gbif/camtrap-dp/dp"
@@ -31,7 +30,7 @@ function(dataset_key="", dataset_title="") {
                    write_dwc(package, file_export_path)
 
                    #copy meta.xml, this copied to the same directory where this script run in the docker image
-                   file.copy(here("meta.xml"), file.path(file_export_path, "meta.xml"))
+                   file.copy("meta.xml", file.path(file_export_path, "meta.xml"))
 
                    #flush memory
                    gc()

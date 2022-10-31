@@ -2,6 +2,7 @@ library(dplyr)
 library(EML)
 library(camtraptor)
 library(logger)
+library(here)
 
 export_path <- "/usr/local/gbif/camtrap-dp/dwca"
 import_path <- "/usr/local/gbif/camtrap-dp/dp"
@@ -18,7 +19,7 @@ log_appender(appender_file(tempfile("camtraptor_", logs_path, ".log")))
 function(dataset_key="", dataset_title="") {
   tryCatch(expr = {#Create the package object
                    file_path <- file.path(import_path, dataset_key, "datapackage.json")
-                   if (!file_test("-f",file_path)) {
+                   if (!file_test("-f", file_path)) {
                     stop(paste("Input path does not exist", file_path))
                    }
                    package <- camtraptor::read_camtrap_dp(file = file_path)
@@ -30,7 +31,7 @@ function(dataset_key="", dataset_title="") {
                    write_dwc(package, file_export_path)
 
                    #copy meta.xml
-                   file.copy("resources/meta.xml", file.path(file_export_path, "meta.xml"))
+                   file.copy(here("resources","meta.xml"), file.path(file_export_path, "meta.xml"))
 
                    #flush memory
                    gc()

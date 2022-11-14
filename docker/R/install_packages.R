@@ -15,8 +15,7 @@ options(
 Sys.setenv(LIBARROW_BINARY = "true", LIBARROW_MINIMAL = "false")
 install.packages("arrow", repos = "https://packagemanager.rstudio.com/all/__linux__/focal/latest", libs_only = TRUE)
 
-
-# Or rOpenSci R-universe
+# Install frictionless package from rOpenSci R-universe
 install.packages("frictionless", repos = "https://ropensci.r-universe.dev")
 if ( ! library("frictionless", character.only=TRUE, logical.return=TRUE) ) {
   quit(status=1, save='no')

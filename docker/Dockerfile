@@ -1,18 +1,17 @@
-FROM r-base:4.1.0
-#Install required system packages
+FROM r-base:4.2.2
+
+# Install required system packages
 RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev libcurl4-openssl-dev libssl-dev \
-                                  libsodium-dev software-properties-common wget libpq-dev libssl-dev libjq-dev\
-    #Create required directories
-    && mkdir -p "/usr/local/gbif/camtrap-dp/R" && mkdir -p "/usr/local/gbif/camtrap-dp/dwca" && mkdir -p "/usr/local/gbif/camtrap-dp/dp" \
-    #Install Apache Arrow libraries
-    && wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
-           -O /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
-    && apt install -y -V /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
-    && apt update -y \
-    && apt install -y libarrow-dev \
-    #Install required R packages from the repository https://cran.r-project.org/bin/linux/ubuntu/
-    && add-apt-repository ppa:c2d4u.team/c2d4u4.0+ \
-    && apt -y install r-cran-plumber r-cran-assertthat r-cran-dbi r-cran-dplyr r-cran-glue r-cran-htmltools r-cran-lifecycle \
+                                libsodium-dev software-properties-common wget libpq-dev libssl-dev libjq-dev libv8-dev
+
+# Install Apache Arrow libraries
+RUN wget https://apache.jfrog.io/artifactory/arrow/$(lsb_release --id --short | tr 'A-Z' 'a-z')/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb -O /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
+    && apt-get install -y -V /tmp/apache-arrow-apt-source-latest-$(lsb_release --codename --short).deb \
+    && apt-get update -y \
+    && apt-get install -y libarrow-dev
+
+# Install required R packages
+RUN apt-get -y install r-cran-plumber r-cran-assertthat r-cran-dbi r-cran-dplyr r-cran-glue r-cran-htmltools r-cran-lifecycle \
                       r-cran-lubridate r-cran-purrr r-cran-rcolorbrewer r-cran-readr r-cran-rlang r-cran-rsqlite r-cran-stringr \
                       r-cran-tidyr r-cran-uuid r-cran-covr r-cran-knitr r-cran-rmarkdown r-cran-testthat r-cran-knitr r-cran-pkgdown \
                       r-cran-roxygen2 r-cran-rversions r-cran-urlchecker r-cran-here r-cran-remotes r-cran-lifecycle r-cran-colorspace \
@@ -24,6 +23,7 @@ RUN apt-get update && apt-get -y install build-essential libxml2-dev libssl-dev 
                       r-cran-future r-cran-units r-cran-shinyjs r-cran-spelling r-cran-rdflib r-cran-dbitest r-cran-maptools r-cran-xml \
                       r-cran-mockr r-cran-sf r-cran-devtools r-cran-logger
 COPY ["R/server.R","R/dp_dwca.R","R/install_packages.R","R/resources/meta.xml","/usr/local/gbif/camtrap-dp/R/"]
+RUN mkdir -p /usr/local/gbif/camtrap-dp/R /usr/local/gbif/camtrap-dp/dwca /usr/local/gbif/camtrap-dp/dp
 WORKDIR "/usr/local/gbif/camtrap-dp/R/"
 #Installing source packages
 RUN ["Rscript", "install_packages.R"]

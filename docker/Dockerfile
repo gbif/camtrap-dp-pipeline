@@ -22,7 +22,7 @@ RUN apt-get -y install r-cran-plumber r-cran-assertthat r-cran-dbi r-cran-dplyr 
                        r-cran-proxy r-cran-rematch r-cran-jpeg r-cran-matrix r-cran-e1071 r-cran-wk r-cran-dbplyr r-cran-listenv r-cran-parallelly \
                        r-cran-classint r-cran-hunspell r-cran-redland r-cran-globals r-cran-palmerpenguins r-cran-maps r-cran-rgdal r-cran-s2 \
                        r-cran-future r-cran-units r-cran-shinyjs r-cran-spelling r-cran-rdflib r-cran-dbitest r-cran-maptools r-cran-xml \
-                       r-cran-mockr r-cran-sf r-cran-devtools r-cran-logger
+                       r-cran-mockr r-cran-sf r-cran-devtools
 
 # Installing source packages
 RUN mkdir -p /R/dwca /R/dp

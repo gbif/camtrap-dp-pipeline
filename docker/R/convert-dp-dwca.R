@@ -1,10 +1,8 @@
 library(dplyr)
 library(camtraptor)
-library(logger)
 
 import_path <- "/R/dp"
 export_path <- "/R/dwca"
-logs_path <- "/R/logs"
 
 #* Transforms the CameraTrap Data Package into DwC-A.
 #* @param dataset_key GBIF datset key
@@ -35,15 +33,10 @@ convertCamtrapDwca <- function(dataset_title="") {
   gc()
 
   # Returns with a success message
-  log_info(skip_formatter(sprintf("Dataset transformed")))
   return(sprintf("Dataset transformed"))
 }
 
 args = commandArgs(trailingOnly=TRUE)
-
-# Logger setup
-if (!fs::dir_exists(logs_path)) fs::dir_create(logs_path)
-log_appender(appender_file(tempfile("camtraptor_", logs_path, ".log")))
 
 if (length(args) == 1) {
   convertCamtrapDwca(args[1])

@@ -14,10 +14,9 @@ if [[ -z "$4" ]]; then
     exit 1
 fi
 
-docker run --rm -it \
+docker run --rm \
        --user $(id -u):$(id -g) \
        --volume $(realpath $1):/R/dp/:ro \
        --volume $(realpath $2):/R/dwca/ \
-       --volume $(realpath $3):/R/logs/ \
        rgbifcamtrap:0.1 \
        "$4"

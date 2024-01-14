@@ -9,7 +9,7 @@ if [[ ! -d "$1" ]]; then
     exit 1
 fi
 
-if [[ -z "$4" ]]; then
+if [[ -z "$3" ]]; then
     echo "Third argument should be project title"
     exit 1
 fi

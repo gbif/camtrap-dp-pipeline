@@ -1,6 +1,11 @@
+install.packages("renv")
+
+renv::install(exclude=("camtraptor"))
+install.packages("devtools")
+
 # Arkdb installation from source
 # https://github.com/ropensci/arkdb
-remotes::install_github("cboettig/arkdb@v0.0.14")
+devtools::install_github("cboettig/arkdb@v0.0.14")
 
 # Installing Apache Arrow from binaries
 # https://arrow.apache.org/docs/r/articles/install.html
@@ -22,7 +27,7 @@ if ( ! library("frictionless", character.only=TRUE, logical.return=TRUE) ) {
 }
 
 # Install camtraptor package from GitHub
-remotes::install_github("inbo/camtraptor", build_vignettes = FALSE, build_manual = FALSE)
+devtools::install_github("inbo/camtraptor", ref = "v0.24.0", build_vignettes = FALSE, build_manual = FALSE)
 if ( ! library("camtraptor", character.only=TRUE, logical.return=TRUE) ) {
   quit(status=1, save='no')
 }

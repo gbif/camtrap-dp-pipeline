@@ -3,6 +3,7 @@
 .idea
 target/
 *.DS_Store
+test/
 
 # Package Files #
 *.jar

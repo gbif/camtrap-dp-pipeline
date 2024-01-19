@@ -14,7 +14,7 @@ if [[ -z "$3" ]]; then
     exit 1
 fi
 
-docker run --rm \
+docker run --pull always --rm \
        --user $(id -u):$(id -g) \
        --volume $(realpath $1):/R/dp/:ro \
        --volume $(realpath $2):/R/dwca/ \

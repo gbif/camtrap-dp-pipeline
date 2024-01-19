@@ -27,7 +27,7 @@ if ( ! library("frictionless", character.only=TRUE, logical.return=TRUE) ) {
 }
 
 # Install camtraptor package from GitHub
-devtools::install_github("inbo/camtraptor", ref = "v0.24.0", build_vignettes = FALSE, build_manual = FALSE)
+devtools::install_github("inbo/camtraptor", ref = "v0.25.0", build_vignettes = FALSE, build_manual = FALSE)
 if ( ! library("camtraptor", character.only=TRUE, logical.return=TRUE) ) {
   quit(status=1, save='no')
 }

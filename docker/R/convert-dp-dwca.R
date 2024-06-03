@@ -1,5 +1,4 @@
-library(dplyr)
-library(camtraptor)
+library(camtrapdp)
 
 import_path <- "/R/dp"
 export_path <- "/R/dwca"
@@ -19,12 +18,12 @@ convertCamtrapDwca <- function(dataset_title="") {
 
   # Create the package object
   print(sprintf("Converting from %s to %s", import_path, export_path))
-  package <- camtraptor::read_camtrap_dp(file = file.path(import_path, "datapackage.json"))
+  package <- camtrapdp::read_camtrapdp(file = file.path(import_path, "datapackage.json"))
   package$title <- dataset_title
 
   # Create the dwc files
   unlink(export_path)
-  write_dwc(package, export_path)
+  camtrapdp::write_dwc(package, export_path)
 
   # Copy meta.xml, this copied to the same directory where this script run in the docker image
   file.copy("meta.xml", file.path(export_path, "meta.xml"))

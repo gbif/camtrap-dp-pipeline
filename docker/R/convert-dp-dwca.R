@@ -24,6 +24,7 @@ convertCamtrapDwca <- function(dataset_title = "") {
   # Create the dwc files
   unlink(export_path)
   camtrapdp::write_dwc(package, export_path)
+  camtrapdp::write_eml(package, export_path)
 
   # Copy meta.xml, this is copied to the same directory where this script run in the docker image
   file.copy("meta.xml", file.path(export_path, "meta.xml"))

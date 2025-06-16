@@ -1,2 +1,2 @@
 #!/bin/bash
-DOCKER_BUILDKIT=1 docker build --no-cache -t docker.gbif.org/rgbifcamtrap:dev .
+DOCKER_BUILDKIT=1 docker build --no-cache -t docker.gbif.org/rgbifcamtrap:0.4.0 .
